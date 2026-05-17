@@ -23,6 +23,7 @@ Weak keywords that need manual filtering:
 
 - `agent`, `agentic`, `tool`, `workflow`, `memory`, `robot`, `action`, `computer use`
 - `skill` when it means human productivity, model capability, generic RL motor skill, or clinical/coding ability without reusable agent artifacts.
+- `Claw`/`OpenClaw` when the paper is only a generic agent benchmark or platform paper. Include it only if the abstract makes skills, skill trees, skill orchestration, or skill ecosystems central.
 
 ## arXiv Search Process
 
@@ -59,6 +60,7 @@ Check in this order:
    - Confirm the README, project page, or code references the same paper/method.
    - Check that the URL is public and not a 404. Prefer `curl -L -I <url>` or a normal GET if HEAD is unreliable.
    - For GitHub repos, `https://api.github.com/repos/<owner>/<repo>` is a quick public/404 check, and `.../readme` is useful when the repo description is empty.
+   - A GitHub repo can be valid even when `/readme` returns 404. If arXiv explicitly names the repo as code/data and the repo itself is public, inspect the tree or accept the URL with that evidence.
 
 Use `[Code](url)` only for verified public code or an official project repository. Use `—` when no public code is found, when a project page says "Coming Soon", or when the only evidence is an unrelated/stale repository.
 
@@ -71,6 +73,7 @@ Use `[Code](url)` only for verified public code or an official project repositor
 - Set `PYTHONIOENCODING=utf-8` before Python scripts that print arXiv metadata; otherwise Windows GBK output can crash on author names or math symbols.
 - Some arXiv pages include generic Hugging Face help links. Ignore `https://huggingface.co/huggingface` and `https://huggingface.co/docs/hub/spaces` unless the paper itself points to a specific dataset/model/space.
 - arXiv HTML pages include unrelated GitHub links from references and the arXiv/LaTeXML footer, such as `github.com/arXiv/html_feedback`, `github.com/brucemiller/LaTeXML`, and cited baseline projects. Do not use those as the paper's code link.
+- arXiv search can match a quoted query because the term appears only in references or background. For inclusion, require the paper's own title or abstract to make the skill mechanism central.
 - A paper can say "open-source" or "open-source release" without exposing a public URL. Leave the `Code` column as `—` until the actual public repository is found and verified.
 - A code URL listed in arXiv can still be private or 404. Verify it before adding it; if it 404s, leave `—` and do not keep the dead link.
 - PDF text extraction can expose broken or line-wrapped URLs. Normalize trailing punctuation and manually verify the final URL.
